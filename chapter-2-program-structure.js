@@ -4,9 +4,6 @@ function triangle() {
       console.log(str);
   }
 }
-// #
-// ##
-// ###...
 
 //Fizz Buzz
 function fizzBuzz() {
@@ -25,3 +22,29 @@ function fizzBuzz() {
     console.log(str || i);
   }
 }
+
+
+// Create a Chess board grid
+function chessBoard(size) {
+  var out = '';
+  var str = '';
+  var chk = '#';
+
+  for (var i = 1;i <= size;i++) {
+    str = '';
+
+    for (var j = 1;j <= size;j++) {
+      str = str + chk;
+      chk = (chk == '#') ? ' ' : '#';
+    }
+
+    out = out + str + '\n';
+    chk = (chk == '#') ? ' ' : '#';
+  }
+
+  console.log(out);
+}
+
+triangle();
+fizzBuzz();
+chessBoard(8);
