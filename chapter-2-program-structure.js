@@ -44,7 +44,3 @@ function chessBoard(size) {
 
   console.log(out);
 }
-
-triangle();
-fizzBuzz();
-chessBoard(8);
