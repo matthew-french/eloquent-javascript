@@ -26,7 +26,7 @@ function returnRange(start,end,step){
 function sumArray(rangeArray){
   var sum = 0;
 
-  for (var i = 0; i < rangeArray.length; i++){
+  for (var i = 0; i < rangeArray.length; i++) {
     sum += rangeArray[i];
   }
 
@@ -48,10 +48,9 @@ function reverseArray(inputArr) {
 // Reverse array inPlace
 // Take an array as arg and modfy inPlace producing a new array in reverse.
 function reverseArrayInPlace(arr){
-
-  for (var i = 0; i < arr.length; i++)
+  for (var i = 0; i < arr.length; i++) {
     arr.splice(i,0,arr.pop());
-
+  }
   return arr;
 }
 
@@ -65,6 +64,7 @@ function arrayToList(arr) {
     if(i == arr.length) {
      return null;
     }
+
     obj.value = arr.splice(0,1)[0];
     obj.rest = arrayToList(arr);
   }
@@ -86,6 +86,7 @@ function listToArray(list) {
   return arr;
 }
 
+// Prepend a value to a list
 function prepend(ele,list) {
   var out = listToArray(list);
   out.unshift(ele);
@@ -93,11 +94,13 @@ function prepend(ele,list) {
   return out;
 }
 
+// Return value from position x in the list object
 function nth(list,position) {
   var arr = listToArray(list);
   return arr[position];
 }
 
+// Return value from position x in the list object using a recursive function
 function rNth(list,position) {
 
   while (position > 0){
@@ -110,40 +113,25 @@ function rNth(list,position) {
   return list.value;
 }
 
-console.log(returnRange());
-var arr2 = returnRange(10,100,10);
-console.log(arr2);
-var list = arrayToList(arr2);
-console.log(list);
-console.log(nth(list,5))
+// deepEqual compare an object or value and return true id all value and nodes are identical.
+function deepEqual(x, y) {
+  if ((typeof x == "object" && x !== null) && (typeof y == "object" && y !== null)) {
+    if (Object.keys(x).length != Object.keys(y).length)
+      return false;
 
-function deepEqual(value1, value2){
-  if (typeof value1 !== typeof value2 | value1 !== value2){
+    for (var prop in x) {
+      if (y.hasOwnProperty(prop))
+      {
+        if (! deepEqual(x[prop], y[prop]))
+          return false;
+      }
+      else
+        return false;
+    }
+    return true;
+  }
+  else if (x !== y)
     return false;
-  }
-
-  if (typeof value1 === 'object') {
-
-  }
-
+  else
+    return true;
 }
-
-var arr = returnRange(1,5,1);
-var list = arrayToList(arr);
-
-//console.log(list);
-//console.log(listToArray(list));
-// var list = {
-//   value : 1,
-//   rest : null
-// }
-
-// var test = list.rest !== null ? true : false;
-// console.log(list.rest);
-// console.log(test);
-// console.log();
-// console.log(returnRange(10,1,-1));
-// console.log(returnRange(1,10,1));
-// console.log(sumArray(testArr));
-// console.log(countBs('how many B B B B B  are in this sentance'));
-// console.log(reverseArray(testArr));

@@ -1,25 +1,54 @@
-var x = returnRange(1,10,1);
-x[1] = returnRange(15,20,1);
-x[1][1] = returnRange(90,100,1);
-console.log(x);
 
-// Flattening
-function flattenMultiArray(arr,out){
-  out = (typeof out === 'object') ? out : [];
-  arr.reduce(function(x,y,z){
-    console.log(z);
-    if (x === undefined){
-      if (typeof y === 'number') {
-        out.push(y);
-      } else {
-        flattenMultiArray(y,out);
-      }
-    } else {
+// var isArray = Array.isArray || function(o) {
+//     var ts = Object.prototype.toString;
+//     return typeof o === "object" &&
+//  	   ts.call(o) === "[object Array]";
+// };
 
-    }
-  });
-  return out;
+function flattenArray(array) {
+  var result = [];
+  flatten(array, result);
+  return result;
 }
 
-var arr = flattenMultiArray(x);
-console.log(arr);
+function flatten(array, result) {
+  var length = array.length;
+  var ii = 0;
+
+  while (length--) {
+    var current = array[ii++];
+    if (Array.isArray(current)) {
+      flatten(current, result);
+    } else {
+      result.push(current);
+    }
+  }
+}
+
+function every(com, arr){
+  var flatArr = flattenArray(arr);
+  var res = true;
+
+  flatArr.forEach(function(v) {
+    if (v !== com)
+      res = false;
+  });
+
+  return res;
+}
+
+function some(com, arr){
+  var flt = flattenArray(arr);
+  var res = false;
+
+  flt.forEach(function(v) {
+    if (v === com)
+      res = true;
+  });
+
+  return res;
+}
+
+var arrays = [1, 1, 1, 1, [1, 1, [1, 2, 1]]];
+console.log(every(1, arrays));
+console.log(some(1, arrays));
