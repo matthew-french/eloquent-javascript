@@ -22,6 +22,10 @@ function returnRange(start,end,step){
   return range;
 }
 
+console.log('\nreturnRange <><>');
+console.log(returnRange(-10,100,10));
+
+
 // Sum of the values in an array.
 function sumArray(rangeArray){
   var sum = 0;
@@ -32,6 +36,10 @@ function sumArray(rangeArray){
 
   return sum;
 }
+
+console.log('\nsumArray <><>');
+console.log(sumArray([1,2,3,4,5]));
+
 
 // Reversing An Array
 // Take an array as arg and output an array in reverse.
@@ -45,6 +53,10 @@ function reverseArray(inputArr) {
   return outputArr;
 }
 
+console.log('\nreverseArray <><>');
+console.log(reverseArray([1,2,3,4,5]));
+
+
 // Reverse array inPlace
 // Take an array as arg and modfy inPlace producing a new array in reverse.
 function reverseArrayInPlace(arr){
@@ -53,6 +65,9 @@ function reverseArrayInPlace(arr){
   }
   return arr;
 }
+
+console.log('\nreverseArrayInPlace <><>');
+console.log(reverseArrayInPlace([1,2,3,4,5]));
 
 // A list
 // Array To List
@@ -72,6 +87,32 @@ function arrayToList(arr) {
   return obj;
 }
 
+console.log('\narrayToList <><>');
+console.log(arrayToList([1,2,3,4,5]));
+
+function arrayToObject2(arr) {
+  var obj = {};
+  for (var i = 0; i < arr.length; ++i)
+    obj[i] = arr[i];
+  return obj;
+}
+
+console.log('\narrayToObject2 <><>');
+console.log(arrayToObject2([1,2,3,4,5]));
+
+function arrayToObject3(arr) {
+
+  var obj = arr.reduce(function(o, v, i) {
+    o[i] = v;
+    return o;
+  }, {});
+
+  return obj;
+}
+
+console.log('\narrayToObject3 <><>');
+console.log(arrayToObject3([1,2,3,4,5]));
+
 // List To Array
 // Build an array from a object(list)
 function listToArray(list) {
@@ -86,6 +127,10 @@ function listToArray(list) {
   return arr;
 }
 
+console.log('\nlistToArray <><>');
+console.log(listToArray(arrayToList([1,2,3,4,5])));
+
+
 // Prepend a value to a list
 function prepend(ele,list) {
   var out = listToArray(list);
@@ -94,11 +139,20 @@ function prepend(ele,list) {
   return out;
 }
 
+console.log('\nprepend <><>');
+console.log(prepend(0,arrayToList([1,2,3,4,5])));
+
+
+
 // Return value from position x in the list object
 function nth(list,position) {
   var arr = listToArray(list);
   return arr[position];
 }
+
+console.log('\nnth <><>');
+console.log(nth(arrayToList([1,2,3,4,5]),4));
+
 
 // Return value from position x in the list object using a recursive function
 function rNth(list,position) {
@@ -113,7 +167,11 @@ function rNth(list,position) {
   return list.value;
 }
 
-// deepEqual compare an object or value and return true id all value and nodes are identical.
+console.log('\nrNth <><>');
+console.log(rNth(arrayToList([1,2,3,4,5]),4));
+
+
+// deepEqual compare an object or value and return true if all value and nodes are identical.
 function deepEqual(x, y) {
   if ((typeof x == "object" && x !== null) && (typeof y == "object" && y !== null)) {
     if (Object.keys(x).length != Object.keys(y).length)
@@ -135,3 +193,7 @@ function deepEqual(x, y) {
   else
     return true;
 }
+
+console.log('\ndeepEqual <><>');
+console.log(deepEqual(arrayToList([1,2,3,4,5]),arrayToList([1,2,3,4,5])));
+console.log(deepEqual(arrayToList([1,2,3,4]),arrayToList([1,2,3,4,5])));

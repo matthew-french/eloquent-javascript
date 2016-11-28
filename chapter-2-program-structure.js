@@ -1,15 +1,17 @@
 // looping a triangle
-function triangle() {
-  for (var str = '#';str.length <= 7;str += '#') {
+function triangle(n) {
+  for (var str = '#';str.length <= n;str += '#') {
       console.log(str);
   }
 }
+console.log('triangle <><>')
+triangle(5);
 
 //Fizz Buzz
-function fizzBuzz() {
+function fizzBuzz(n) {
   var str;
 
-  for (var i = 1; i <= 100; i++) {
+  for (var i = 1; i <= n; i++) {
 
     str = '';
 
@@ -22,6 +24,9 @@ function fizzBuzz() {
     console.log(str || i);
   }
 }
+
+console.log('fizzBuzz <><>')
+fizzBuzz(5);
 
 
 // Create a Chess board grid
@@ -44,3 +49,6 @@ function chessBoard(size) {
 
   console.log(out);
 }
+
+console.log('chessBoard <><>')
+chessBoard(5);
