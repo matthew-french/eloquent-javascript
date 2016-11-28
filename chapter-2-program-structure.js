@@ -4,7 +4,7 @@ function triangle(n) {
       console.log(str);
   }
 }
-console.log('triangle <><>')
+console.log('\ntriangle <><>')
 triangle(5);
 
 //Fizz Buzz
@@ -25,7 +25,7 @@ function fizzBuzz(n) {
   }
 }
 
-console.log('fizzBuzz <><>')
+console.log('\nfizzBuzz <><>')
 fizzBuzz(5);
 
 
@@ -50,5 +50,5 @@ function chessBoard(size) {
   console.log(out);
 }
 
-console.log('chessBoard <><>')
+console.log('\nchessBoard <><>')
 chessBoard(5);

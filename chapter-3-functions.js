@@ -3,7 +3,7 @@ function min(arg1, arg2){
   return (arg1 > arg2) ? arg2 : arg1;
 }
 
-console.log('min <><>');
+console.log('\nmin <><>');
 console.log(min(10,5));
 
 
@@ -22,7 +22,7 @@ function isEven(num) {
   return isEven(num - 2);
 }
 
-console.log('isEven <><>');
+console.log('\nisEven <><>');
 console.log(isEven(11));
 
 
@@ -41,7 +41,7 @@ function countChar(string,chr){
   return numChr;
 }
 
-console.log('countChar <><>');
+console.log('\ncountChar <><>');
 console.log(countChar('Matthew going to ace this test', 'e'));
 
 // Bean Counting - countBs - return number of B's in a string.
@@ -49,5 +49,5 @@ function countBs(string) {
   return countChar(string,'B');
 }
 
-console.log('countBs <><>');
+console.log('\ncountBs <><>');
 console.log(countBs('Matthew going to ace this test BBBBB'));

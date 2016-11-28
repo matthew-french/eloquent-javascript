@@ -1,10 +1,3 @@
-
-// var isArray = Array.isArray || function(o) {
-//     var ts = Object.prototype.toString;
-//     return typeof o === "object" &&
-//  	   ts.call(o) === "[object Array]";
-// };
-
 function flattenArray(array) {
   var result = [];
   flatten(array, result);
@@ -66,7 +59,6 @@ console.log('\nsome <><>');
 console.log(someItem([1,2,3,[4,5]],1));
 console.log(someItem([1,1,1,[1,1]],1));
 
-
 var ANCESTRY_FILE = "[\n  " + [
   '{"name": "Carolus Haverbeke", "sex": "m", "born": 1832, "died": 1905, "father": "Carel Haverbeke", "mother": "Maria van Brussel"}',
   '{"name": "Emma de Milliano", "sex": "f", "born": 1876, "died": 1956, "father": "Petrus de Milliano", "mother": "Sophia van Damme"}',
@@ -108,3 +100,74 @@ var ANCESTRY_FILE = "[\n  " + [
   '{"name": "Maria Sturm", "sex": "f", "born": 1835, "died": 1917, "father": "Charles Sturm", "mother": "Seraphina Spelier"}',
   '{"name": "Jacobus Bernardus van Brussel", "sex": "m", "born": 1736, "died": 1809, "father": "Jan van Brussel", "mother": "Elisabeth Haverbeke"}'
 ].join(",\n  ") + "\n]";
+
+console.clear();
+
+var ancestry = JSON.parse(ANCESTRY_FILE);
+console.log(ancestry.length);
+// → 39
+
+/*function filter(array, test) {
+  var passed = [];
+  for (var i = 0; i < array.length; i++) {
+    if (test(array[i]))
+      passed.push(array[i]);
+  }
+  return passed;
+}
+console.log(filter(ancestry, function(person) {
+  return person.born > 1900 && person.born < 1925;
+}));*/
+
+console.log('\narray filter <><>');
+
+console.log(ancestry.filter(function(person) {
+  return person.father == "Carel Haverbeke";
+}));
+// → [{name: "Carolus Haverbeke", …}]
+
+console.log('\nmap <><>');
+
+function map(array, transform) {
+  var mapped = [];
+  for (var i = 0; i < array.length; i++)
+    mapped.push(transform(array[i]));
+  return mapped;
+}
+
+var overNinety = ancestry.filter(function(person) {
+  return person.died - person.born > 90;
+});
+console.log(map(overNinety, function(person) {
+  return person.name;
+}));
+// ES6 Way
+console.log(overNinety.map(person => person.name));
+// → ["Clara Aernoudts", "Emile Haverbeke",
+//    "Maria Haverbeke
+
+console.log('\nreduce <><>');
+function reduce(array, combine, start) {
+  var current = start;
+  for (var i = 0; i < array.length; i++)
+    current = combine(current, array[i]);
+  return current;
+}
+
+console.log(reduce([1, 2, 3, 4], function(a, b) {
+  return a + b;
+}, 0));
+// ES6 way
+console.log([ 1, 2, 3, 4].reduce((a,b) => a + b))
+// → 10
+
+console.log(ancestry.reduce(function(min, cur) {
+  if (cur.born < min.born) return cur;
+  else return min;
+}));
+//ES6 way
+console.log(ancestry.reduce((min, cur) => {
+  if (cur.born < min.born) return cur;
+  else return min;
+}));
+// → {name: "Pauwels van Haverbeke", born: 1535, …}

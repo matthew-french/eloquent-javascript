@@ -30,6 +30,9 @@ console.log(returnRange(-10,100,10));
 function sumArray(rangeArray){
   var sum = 0;
 
+  // ES6 Way
+  // rangeArray.forEach(n => sum += n );
+
   for (var i = 0; i < rangeArray.length; i++) {
     sum += rangeArray[i];
   }
